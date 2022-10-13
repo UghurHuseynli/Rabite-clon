@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/carusel.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/campaigns.css') }}">
+{% endblock css %}
+
+
+{% block body %}
+<div class="container-fluid d-flex justify-content-around align-items-center mb-5 mt-3"
+    style="background-image: linear-gradient(275deg, #6ebb20, #129450); height: 15rem; padding: 0 0 0 15rem;">
+    <div>
+        <h1 class="text-white fw-normal">Kampaniyalar</h1>
+        <p class="text-white fs-5 fw-light w-75">Rabitəbank müştərilərini düşünərək, daim yenilik və kampaniyalarla
+            onları sevindirir.</p>
+    </div>
+    <div><img class="w-75" src="{{ url_for('static', filename = 'images/speaker.webp') }}" alt="..."></div>
+</div>
+
+<div class="container border-0" style="width: 90%;">
+    <!-- filter section  -->
+    <nav class="navbar navbar-light bg-white">
+        <div class="container-fluid justify-content-start border-bottom pb-5">
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="all-button"
+                type="button">Bütün kampaniyalar</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="loan"
+                type="button">Kredit</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="deposits"
+                type="button">Əmanətlər</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="d_emlak"
+                type="button">Daşınmaz əmlak</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="bisness"
+                type="button">Biznesin inkişafı</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="tikinti"
+                type="button">Tikinti</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="vehicle"
+                type="button">Nəqliyyat və avadanlıq</button>
+            <button class="btn btn-outline-success me-2 rounded-pill filter-btn-size" id="card"
+                type="button">Kart</button>
+        </div>
+    </nav>
+
+
+    <div class="container-fluid m-0 mt-5">
+        <p class="no-content d-none"><i class="fa-solid fa-file-lines me-2"></i> Bu kategoriya üzrə heç bir məlumat
+            yoxdur.</p>
+        <div class="d-flex flex-wrap" id="pushing-div">
+            {% for ele in camp %}
+            <div class="card-eleement bg-color-card p-2rem hover-ele d-flex w--48"
+                data-type='{{ ele.filter_category_card }}'>
+                <div class="w-50">
+                    <p class="card-type">{{ ele.category }}</p>
+                    <p class="card-content">{{ ele.title }}</p>
+                    <a href="" type="button" class="card-button">Daha ətraflı</a>
+                </div>
+                <img src="{{ url_for('static', filename = 'images/') }}{{ ele.img }}"
+                    class="img-size align-self-end d-flex justify-content-end" alt="...">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+    <p class="page-number">1</p>
+
+    <!-- carusel  -->
+    {% include 'includes/slider.html' %}
+</div>
+{% endblock body %}
+
+
+{% block js %}
+<script src="{{ url_for('static', filename = 'js/campaigns.js') }}"></script>
+{% endblock js %}

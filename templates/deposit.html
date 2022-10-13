@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+{% from "includes/formhelpers.html" import render_field %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/deposit.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/carusel.css') }}">
+{% endblock css %}
+
+
+{% block body %}
+<div class="container-fluid d-flex justify-content-around align-items-center mb-5 mt-3"
+  style="background-image: linear-gradient(275deg, #6ebb20, #129450);">
+  <div>
+    <h1 class="text-white fw-normal ">Fərdi Əmanətlər</h1>
+  </div>
+  <div><img class="w-75" src="{{ url_for('static', filename = 'images/ind_deposit.png') }}" alt="..."></div>
+</div>
+
+<div class="container w-75 border-0">
+  <!-- database info section -->
+
+  {% for deposit in deposits %}
+  <div id="deposit-card" style="margin-bottom: 5rem;" data-deposit-type = '{{ deposit.deposit_type }}'>
+    <div class="card d-flex flex-row bg-color-card border-0 mb-4">
+      <img class="card-img" src="{{ url_for('static', filename = 'images/') }}{{ deposit.img_url }}" alt="...">
+      <div class="card-body">
+        {% if deposit.d_name %}
+        <h5 class="card-title mt-5 card-text-header  mb-5">{{ deposit.d_name }}</h5>
+        {% endif %}
+        <div class="d-flex flex-row border-bottom pb-4">
+          {% if deposit.time %}
+          <div class="me-5">
+            <p class="card-text card-text-title  mb-1">Müddət: </p>
+            <p class="card-text card-text-header ">{{ deposit.time }} ayadək </p>
+          </div>
+          {% else %}
+          <div class="me-5">
+            <p class="card-text card-text-title  mb-1"></p>
+            <p class="card-text card-text-header "></p>
+          </div>
+          {% endif %}
+          {% if deposit.interest %}
+          <div class="ms-5">
+            <p class="card-text card-text-title mb-1 text-nowrap">Faiz dərəcəsi: </p>
+            <p class="card-text card-text-header ">{{ deposit.interest }} %-dək </p>
+          </div>
+          {% else %}
+          <div class="ms-5">
+            <p class="card-text card-text-title mb-1 text-nowrap"></p>
+            <p class="card-text card-text-header "></p>
+          </div>
+          {% endif %}
+        </div>
+        <a href="{{ url_for('deposit_page', name = deposit.detail_slug) }}" class="btn btn-light ele-button ">Daha
+          Ətraflı</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+
+
+  <!-- ------- -->
+  <div class="card d-flex flex-row bg-color-card border-0">
+    <div class="card-body ms-4 d-flex flex-column">
+      <h5 class="card-title mt-5  mb-5 online-header">Online sifariş</h5>
+      <form action="" method="post">
+        {{ form.csrf_token }}
+        <div class="d-flex flex-row border-bottom pb-4">
+          <div class="w-100 d-flex flex-wrap gap-4">
+            {{ render_field(form.user_name, class='form-control') }}
+            {{ render_field(form.user_lastname, class='form-control') }}
+            {{ render_field(form.user_phone, class='form-control js-phone') }}
+            {{ render_field(form.deposit_type, class='form-select form-control') }}
+          </div>
+        </div>
+        <button
+          class="btn btn-light ele-button input-height w--48 send-button d-flex justify-content-center align-items-center mb-4" type="submit">Davam et <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- carusel  -->
+  {% include 'includes/slider.html' %}
+</div>
+
+
+{% endblock body %}
+
+
+{% block js %}
+  <script src="{{ url_for('static', filename = 'js/deposit.js') }}"></script>
+{% endblock js %}
+  

@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% from "includes/formhelpers.html" import render_field %}
+{% from "includes/formhelpers_.html" import render_field_ %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/card-offer.css') }}">
+{% endblock css %}
+
+
+{% block body %}
+<div class="container-fluid d-flex align-items-center mb-5 mt-3 gb-linear-ferdi ">
+    <div class="w-75 m-auto">
+        <h1 class="text-white fw-normal">Saxlanc seyfləri</h1>
+        <p class="text-white fs-5 fw-light w-50">Rabitəbank qiymətlilərin saxlanması üçün saxlanc seyflərini sizə
+            sərfəli şərtlərlə təqdim edir</p>
+    </div>
+</div>
+
+<div class="container w-75 bg--color">
+    <h3 class="card-offer-header">Onlayn sifariş</h3>
+    <form action="" method="post">
+        {{ form.csrf_token }}
+        <div class="d-flex flex-wrap gap-4 border-bottom">
+            {{ render_field(form.card_name, class='form-select form-control') }}
+            {{ render_field(form.card_type, class='form-select form-control') }}
+            {{ render_field(form.card_currency, class='form-select form-control') }}
+            {{ render_field(form.card_use_time, class='form-select form-control') }}
+            {{ render_field(form.card_office, class='form-select form-control') }}
+            {{ render_field(form.user_name, class='form-control', type = 'text') }}
+            {{ render_field(form.user_lastname, class='form-control', type = 'text') }}
+            {{ render_field(form.user_email, class='form-control') }}
+            {{ render_field(form.user_phone, class='form-control js-phone') }}
+            {{ render_field_(form.front_img, class='position-absolute js-info', style="opacity: 0; width: 100%; height: 100%") }}
+            {{ render_field_(form.back_img, class='position-absolute js-info', style="opacity: 0; width: 100%; height: 100%") }}
+            <div>
+                <div class="w--48 ms-3" style="font-size: 14px;">
+                    <p><strong>Qeyd:</strong> Bakı və Sumqayıt filiallarında yalnız çatdırılma və ya E-manat terminalı
+                        vasitəsi ilə kart sifarişi qəbul edilir. Digər rayon filiallarında yalnız E-manat terminalı
+                        vasitəsi
+                        sifariş mümkündür. Əks halda sifariş qəbul olunmayacaq.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-5 d-flex flex-wrap gap-4">
+            <div class="w--48 note-end ">
+                <p><b>QEYD:</b> Bankdaxili qaydalar əsasında “Öz müştərini tanı” prinsipinə əsasən müştəri ilə işgüzar
+                    münasibətlər yalnız müştərinin tam və əhatəli eyniləşdirilməsi və verifikasiyasından sonra yaradılır
+                    və
+                    daim yenilənir. Bu məqsədlə hər bir müştərinin həqiqi kimliyini təyin etməyə və hər bir müştəri
+                    kateqoriyasına məxsus riskləri qiymətləndirməyə imkan verən müvafiq eyniləşdirmə və verifikasiya
+                    standartları müəyyən edilmişdir. Qeyd olunanlara əsasən, xidmətlərimizdən ilk dəfə istifadə edən
+                    müştərilər yalnız şəxsən iştirak etməklə hesab aça və bununla əlaqədar müqavilə bağlaya, habelə
+                    müvafiq
+                    plastik kartı təhvil ala bilərlər. Bankımızın artıq müştərisi olan şəxslər qeyd edilən əməliyyatları
+                    həmin əməliyyatların həyata keçirilməsi üçün səlahiyyətləri qeyd edilən müvafiq qaydada təsdiq
+                    edilmiş
+                    etibarnamələr əsasında nümayəndələri vasitəsilə həyata keçirə bilərlər.</p>
+            </div>
+            <div class="w--48">
+                <button
+                    class="btn btn-light ele-button input-height col-6 send-button d-flex justify-content-center align-items-center align-self-end mb-4"
+                    type="submit">Sifariş et <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock body %}
+
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/card_offer.js') }}"></script>
+{% endblock js %}
+    

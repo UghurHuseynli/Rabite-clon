@@ -1,0 +1,54 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+.w--90{
+    width: 90%;
+}
+.carusel-info-header{
+    font-size: 40px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: #2e384d;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-text-title{
+    opacity: 0.6;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    letter-spacing: normal;
+    color: #15334a;
+    margin-top: 12px;
+    width: 90%;
+}
+
+.more-info-btn{
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #ffffff;
+    background-color: #2e384d;
+    margin-top: 30px;
+}
+
+.more-info-btn:hover{
+    color: #ffffff;
+    background-color: #6ebb20;
+}
+
+.bg-color-card{
+    background-color: #f8fafb;
+}

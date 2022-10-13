@@ -1,0 +1,126 @@
+*{
+    font-family: "Roboto", sans-serif;
+}
+
+.filter-btn-size{
+    font-size: 14px;
+    color: #708390;
+    border-color: #6ebb20;
+}
+.filter-btn-size:hover{
+    background-color: #6ebb20;
+    border-color: #6ebb20;
+}
+.bg-color-card{
+    background-color: #f8fafb;
+}
+
+.card-type{
+    font-size: 10px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: 0.67px;
+    color: #708390;
+}
+
+.card-button{
+    border-radius: 6px;
+    box-shadow: 0 4px 16px 0 rgb(191 197 210 / 50%);
+    background-color: #c4ccd1;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    transition: all 0.5s;
+    visibility: visible;
+    justify-self: flex-end;
+    margin-top: 4rem;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.hover-ele:hover  .card-button{
+    visibility: visible;
+    opacity: 0.6;
+}
+
+.card-button:hover{
+    visibility: visible;
+    opacity: 1;
+    background-color: #15334a;
+    color: #ffffff;
+}
+
+.card-content{
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: -0.4px;
+    color: #2e384d;
+    margin-top: 3rem;
+}
+
+.card-eleement{
+    width: 50%;
+    min-height: 18rem;
+}
+.card-eleement:nth-child(odd){
+    margin-right: 1rem;
+}
+.p-2rem{
+    padding: 2rem;
+}
+
+.img-size{
+    max-width: 60%;
+    max-height: 100%;
+}
+
+.page-number{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px 0 rgb(191 197 210 / 50%);
+    background-color: #6ebb20;
+    transition: all 0.5s;
+    margin-top: 3rem;
+}
+
+.w--48{
+    width: 48%;
+    margin-bottom: 1rem;
+}
+
+.no-content{
+    font-size: 24px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    color: #979ca8;
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+}

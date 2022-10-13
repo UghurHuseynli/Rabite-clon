@@ -1,0 +1,14 @@
+{% macro render_field_(field) %}
+  <div class="w--48 text-secondary position-relative d-flex align-items-center justify-content-between form-control" style=" padding: 1rem 0.75rem;">
+    {{ field(**kwargs)|safe }}
+    {{ field.label }}
+    <i class="fa-solid fa-paperclip fa-xl" style="color: #79c031;"></i>
+    {% if field.errors %}
+    <ul class=errors>
+      {% for error in field.errors %}
+      <li class="text-danger">{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+{% endmacro %}

@@ -1,0 +1,43 @@
+<div id="carouselExampleDark" class="carousel carousel-dark slide mt-5 bg-color-card" data-bs-ride="carousel">
+  <div class="m-auto w--90 my-5">
+    <div class="carousel-indicators d-flex w--90 m-auto justify-content-start">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <div class="d-flex justify-content-around align-items-center">
+          <div>
+            <h5 class="carusel-info-header">Rabita Mobile</h5>
+            <p class="card-text-title mb-5">Rabita Mobile ilə banka getməyə ehtiyac yoxdur, bankınız hər zaman
+              yanınızdadır!</p>
+            <a href="" role="button" class="more-info-btn">Daha ətraflı</a>
+          </div>
+          <img src="{{ url_for('static', filename = 'images/slider_img1.webp') }}" class="mt-5" alt="...">
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <div class="d-flex justify-content-around align-items-center">
+          <div>
+            <h5 class="carusel-info-header">RabitaBot</h5>
+            <p class="card-text-title mb-5">Azərbaycanın ilk maliyyə çatbotu!</p>
+            <a href="" role="button" class="more-info-btn">Daha ətraflı</a>
+          </div>
+          <img src="{{ url_for('static', filename = 'images/slider_img2.webp') }}" class="mt-5" alt="...">
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex justify-content-around align-items-center">
+          <div>
+            <h5 class="carusel-info-header">İnternet Bankçılıq</h5>
+            <p class="card-text-title mb-5">Hesablarınızı idarə etmək rahatdır!</p>
+            <a href="" role="button" class="more-info-btn">Daha ətraflı</a>
+          </div>
+          <img src="{{ url_for('static', filename = 'images/slider_img3.webp') }}" class="mt-5" alt="...">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

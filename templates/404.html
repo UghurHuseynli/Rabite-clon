@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    <title>Page not found</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container-fluid text-center py-5" style="background: #ccc;">
+    <img src="{{ url_for('static', filename = 'images/404.jpg') }}" alt="404">
+</div>
+{% endblock body %}
+    

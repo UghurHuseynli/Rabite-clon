@@ -1,0 +1,92 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.card-img{
+    width: 25rem;
+    border-radius: 1rem;
+    object-fit: fill;
+    margin: 2rem;
+    height: 15rem;
+}
+
+.card-text-title{
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #708390;
+}
+.card-text-header{
+    font-size: 20px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    color: #2e384d;
+}
+
+.bg-color-card{
+    background-color: #f8fafb;
+}
+
+.ele-button{
+    margin-top: 2rem;
+    border-radius: 6px;
+    border: solid 1px #e6ebed;
+    padding: 15px 52px;
+    font-size: 16px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.3px;
+    text-align: center;
+    color: #708390;
+}
+
+.online-header{
+    font-size: 24px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #2e384d;
+}
+
+.ele-button:hover{
+    color: #e6ebed;
+    background-color: #708390;
+}
+
+.input-height{
+    height: 3.5rem;
+}
+.send-button{
+    color: #e6ebed;
+    background-color: #6ebb20;
+}
+.send-button:hover{
+    background-color: #2e384d;
+}
+
+.card-text-title{
+    opacity: 0.6;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.75;
+    letter-spacing: normal;
+    color: #15334a;
+    margin-top: 12px;
+    width: 90%;
+}
+
+.w--48{
+    width: 48%;
+}

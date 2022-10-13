@@ -1,0 +1,545 @@
+{% extends 'layout.html'%}
+{% from "includes/formhelpers_month.html" import render_field_month %}
+{% from "includes/formhelpers_money.html" import render_field_money %}
+{% from "includes/formhelpers_interest.html" import render_field_interest %}
+
+{% block css%}
+<style>
+    a {
+        text-decoration: none;
+        font-family: "Roboto", sans-serif;
+        color: #2e384d;
+    }
+
+    a.active {
+        color: #2e384d;
+    }
+
+    .downul>li {
+        margin-right: 10px;
+    }
+
+    .downul>li>a {
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    a:hover {
+        cursor: pointer;
+        color: green;
+    }
+
+    .card:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        transition: box-shadow 0.7s ease-in-out;
+    }
+
+    .radialup {
+        width: 100%;
+        height: 400px;
+        background-image: radial-gradient(circle at 90% 0px, rgb(110, 187, 32), rgb(18, 148, 80));
+
+    }
+
+    button {
+        font-family: "Roboto", sans-serif;
+    }
+
+    .radialdown {
+        height: 400px;
+        background-color: #f8fafb;
+    }
+
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 108%;
+        position: relative;
+        left: -10px;
+        height: 5px;
+        border-radius: 2px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        box-shadow: 0 4px 16px 0 rgb(109 98 248 / 30%);
+        border: solid 4px white;
+        border-radius: 50%;
+        background: #6ebb20;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #6ebb20;
+        cursor: pointer;
+    }
+
+    .currencyli:hover {
+        background: #6ebb20;
+    }
+
+    .dropdownselect {
+        appearance: none;
+        padding-right: 15px;
+        background-image: url(https://www.rabitabank.com/assets/css/images/select_arrow_down.png);
+        background-repeat: no-repeat;
+        background-position: calc(100% - -11px) center;
+    }
+
+    .nagdpul:hover {
+        background-color: #2E384D;
+    }
+
+    .nagdpul {
+        background-color: #6ebb20;
+    }
+
+    .slider2btn:hover {
+        background-color: #6ebb20;
+    }
+
+    .slider2btn {
+        background-color: #2E384D;
+    }
+
+    .header {
+        z-index: 1;
+        background-color: white;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+
+    .sticky+.content {
+        padding-top: 102px;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    [contentEditable=true]:empty:not(:focus):before {
+        content: attr(data-text)
+    }
+</style>
+{% endblock %}
+{% block body%}
+<section class="content">
+    <div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-indicators" style="display:flex ; justify-content: left;">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+        </div>
+        <div class="carousel-inner ">
+            <div class="carousel-item active radialup">
+                <div class="justify-content-between ">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 50%; top:30%">
+                        <h2 class="mb-4">Apple Pay indi Rabitəbank müştəriləri üçündə aktivdir!</h2>
+                        <button style="width: 17%; font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2 ">Daha ətraflı</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2022/01/slider.png" class="w-25 mt-3"
+                            alt="..." style="position: relative ; left: 65%;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item  radialup">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 50%; top:30%">
+                        <h2 class="mb-3">Nağd pul krediti üzrə kompaniya</h2>
+                        <h6 class="mb-4">Krediti düz 12-dən vur!</h6>
+                        <button style="width: 17%; font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2 ">Daha ətraflı</button>
+                        <button style="font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2">Sifariş et</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2022/04/sliderrrr.png" class="w-25 mt-3"
+                            alt="..." style="position: relative ; left: 65%;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item  radialup">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 50%; top:30%">
+                        <h2 class="mb-4">Lombard krediti üzrə kompaniya</h2>
+
+                        <button style="width: 17%; font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2 ">Daha ətraflı</button>
+                        <button style="font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2">Sifariş et</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2022/02/slayd.png" class="w-25 mt-3"
+                            alt="..." style="position: relative ; left: 65%;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item  radialup">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 50%; top:30%">
+                        <h2 class="mb-3">Faizsiz Avans</h2>
+                        <h6 class="mb-3">Rabitəbankdan əmək haqqı alanlara "Faizsiz avans"</h6>
+                        <button style="width: 17%; font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2 me-1">Daha ətraflı</button>
+                        <button style="font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2">Sifariş et</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2021/10/esas%20slayd.png" class="w-25 mt-3"
+                            alt="..." style="position: relative ; left: 65%;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item  radialup">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 50%; top:30%">
+                        <h2 class="mb-3">Daha ətraflı</h2>
+                        <h6 class="mb-3">Sifariş et</h6>
+                        <button style="width: 17%; font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2 ">Daha ətraflı</button>
+                        <button style="font-weight: 500;" id="sum" type="button"
+                            class="btn btn-light text-dark mb-2">Sifariş et</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2021/03/161322351_262194535538678_3450547117277045758_n.png"
+                            class="w-25 mt-3" alt="..." style="position: relative ; left: 65%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cards mt-5">
+        <ul class="col-9 d-flex flex-row m-auto justify-content-between ps-0 mb-5">
+            <li>
+                <div class="card p-4" style="width: 18rem; background-color: #F8FAFB; border: none;">
+                    <img src="https://www.rabitabank.com/uploads/fields/2019/11/group-362x.png" style="width: 102px;"
+                        class="card-img-top" alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <h5 class="card-title ">Fərdi kreditlər</h5>
+                        <p class="card-text" style="font-weight: 500 ; color: #B1B9C2;"><strong
+                                style="color: #2E384D ;font-size: 40px; font-weight: bold; line-height: 0.8; display: block;">12%</strong>-dən
+                            başlayaraq</p>
+                        <a href="#" class="btn btn-success w-100" style="background-color: #6ebb20; border: 0;">Sifariş
+                            et →</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card p-4" style="width: 18rem; background-color: #F8FAFB; border: none;">
+                    <img src="https://www.rabitabank.com/uploads/fields/2019/11/group-362x.png" style="width: 102px;"
+                        class="card-img-top" alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <h5 class="card-title ">Kartmane Debet</h5>
+                        <p class="card-text" style="font-weight: 500 ; color: #B1B9C2;"><strong
+                                style="color: #2E384D ;font-size: 40px; font-weight: bold; line-height: 0.8; display: block;">40%</strong>-dən
+                            başlayaraq</p>
+                        <a href="#" class="btn btn-success w-100" style="background-color: #6ebb20; border: 0;">Sifariş
+                            et →</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="card p-4" style="width: 18rem; background-color: #F8FAFB; border: none;">
+                    <img src="https://www.rabitabank.com/uploads/fields/2019/11/group-362x.png" style="width: 102px;"
+                        class="card-img-top" alt="...">
+                    <div class="card-body p-0 mt-3">
+                        <h5 class="card-title ">Fərdi Əmanətlər</h5>
+                        <p class="card-text" style="font-weight: 500 ; color: #B1B9C2;"><strong
+                                style="color: #2E384D ;font-size: 40px; font-weight: bold; line-height: 0.8; display: block;">10.50%</strong>-dən
+                            başlayaraq</p>
+                        <a href="#" class="btn btn-success w-100" style="background-color: #6ebb20; border: 0;">Sifariş
+                            et →</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div id="carouselExampleCaptions1" class="carousel slide col-9 m-auto mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators" style="display:flex ; justify-content: left; left: -5%;">
+            <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="0"
+                class="active bg-secondary" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="1" class=" bg-secondary"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions1" data-bs-slide-to="2" class="bg-secondary"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner ">
+            <div class="carousel-item active radialdown col-9">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 40%; top:30%; left:10%;">
+                        <h2 style="color:#2E384D ;" class="mb-4">Rabita Mobile</h2>
+                        <h6 style="color:#708390;" class="mb-4">Rabita mobile ilə banka getməyə ehtiyac yoxdur,
+                            bankınız hər zaman yanınızdadır!</h6>
+                        <button style="width: 30%;height: 30%; font-weight: 500; " id="sum" type="button"
+                            class="slider2btn btn  text-light mb-2 ">Daha ətraflı</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2021/04/33.png" class=" mt-3 mb-0" alt="..."
+                            style="width:45% ;position: relative ; left: 55%;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item radialdown col-9">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 40%; top:30% ;left:10%;">
+                        <h2 style="color:#2E384D ;" class="mb-4">Rabita Bot</h2>
+                        <h6 style="color:#708390 ;" class="mb-4">Azərbaycanın ilk çatbotu!</h6>
+                        <button style="width: 30%;height: 30%; font-weight: 500; " id="sum" type="button"
+                            class="slider2btn btn  text-light mb-2 ">Daha ətraflı</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2021/04/11.png" class=" mt-3 mb-0" alt="..."
+                            style="width:45% ;position: relative ; left: 50%;">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item radialdown col-9">
+                <div class="justify-content-between">
+                    <div class="carousel-caption text-start justify-content-center"
+                        style="height:50% ; width: 40%; top:30%;left:10%;">
+                        <h2 style="color:#2E384D ;" class="mb-4">İnternet Bankçılıq</h2>
+                        <h6 style="color:#708390 ;" class="mb-4">Hesablarınızı idarə etmək rahatdır!</h6>
+                        <button style="width: 30%;height: 30%; font-weight: 500; " id="sum" type="button"
+                            class="slider2btn btn  text-light mb-2 ">Daha ətraflı</button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="https://www.rabitabank.com/uploads/posts/2021/04/22.png" class=" mt-3 mb-0" alt="..."
+                            style="width:45% ;position: relative ; left: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-9 m-auto mb-5 " style="background-color:#F8FAFB; height:400px ; padding: 50px;">
+        <h4>Nağd pul krediti 12%-dən</h4>
+        <form action="" method="post">
+            {{ form.csrf_token }}
+            <ul class="d-flex justify-content-between flex-row " style="padding: 30px 0;">
+                <li
+                    style="width:30% ;border: 1px solid #e6ebed; height:59px; padding:0 10px; border-radius: 6px; background-color: white;">
+                    {{ render_field_month(form.time, type='range', min='3', max = '36', value = '50', class="slider", id="myRange1") }}
+                </li>
+                <li
+                    style="width:30% ;border: 1px solid #e6ebed; height:59px; padding:0 10px; border-radius: 6px; background-color: white;">
+                    {{ render_field_money(form.credit_money, type='range', min='300', max = '20000', value = '50', class="slider", id="myRange2") }}
+                </li>
+                <li
+                    style="width:30% ;border: 1px solid #e6ebed; height:59px; padding:0 10px; border-radius: 6px; background-color: white;">
+                    {{ render_field_interest(form.credit_interest, type='range', min='12', max = '30', value = '50', class="slider", id="myRange3") }}
+                </li>
+            </ul>
+            <hr style="height:0.5px ;">
+            <div class="d-flex justify-content-between flex-row align-items-center">
+                <ul class="d-flex justify-content-between flex-row col-7" style="padding: 30px 0;">
+                    <li>
+                        <h5 style="font-size:17px ; color: #708390;">Ümumi məbləğ</h5>
+                        <p style="font-size: 20px ; font-weight: 500;"> <span id="all-money-add"></span> AZN</p>
+                    </li>
+                    <li>
+                        <h5 style="font-size:17px ; color: #708390;">Faiz məbləği</h5>
+                        <p style="font-size: 20px ; font-weight: 500;"> <span id="interest-money-add"></span> AZN</p>
+                    </li>
+                    <li>
+                        <h5 style="font-size:17px ; color: #708390;">Aylıq ödəniş</h5>
+                        <p style="font-size: 20px ; font-weight: 500;"> <span id="monthly-payment"></span> AZN</p>
+                    </li>
+                </ul>
+                <button style="width: 20%;height:50px; font-weight: 500; " id="sum" type="submit"
+                    class="nagdpul btn text-light mb-2 ">Sifariş et →</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-9 m-auto mb-5 justify-content-between"
+        style="background-color:#F8FAFB; height:400px ; padding:45px 45px 20px; ">
+        <div class="d-flex justify-content-between ">
+            <ul class="d-flex flex-row ps-0 justify-content-between col-5 mb-0">
+                <li>
+                    <h5 style="font-size: 16px ; color: #708390;">Valyuta</h5>
+                    <ul class="ps-0">
+                        <li style="font-size:24px ;">GBP</li>
+                        <li style="font-size:24px ;">EUR</li>
+                        <li style="font-size:24px ;">USD</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5 style="font-size: 16px ; color: #708390;">Alış</h5>
+                    <ul class="ps-0">
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="gbp_price">2.0940</p><i class="fa-solid fa-caret-down fa-xs"
+                                style="color:red ;"></i>
+                        </li>
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="euro_price">1.8060 <i class="fa-solid fa-caret-down fa-xs"
+                                    style="color:red ;"></i>
+                        </li>
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="dollar_price">1.6900</p><i class="fa-solid fa-caret-down fa-xs"
+                                style="color:red ;"></i>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h5 style="font-size: 16px ; color: #708390;">Satış</h5>
+                    <ul class="ps-0">
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="azn_price_for_gbp">{{gbp}}</p><i
+                                class="fa-solid fa-caret-down fa-xs" style="color:red ;"></i>
+                        </li>
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="azn_price_for_eur">{{ euro}} </p><i
+                                class="fa-solid fa-caret-down fa-xs" style="color:red ;"></i>
+                        </li>
+                        <li style="font-size:24px ;" class="d-flex flex-row align-items-center">
+                            <p class="m-0 me-3" id="azn_price_for_usd">{{ '%0.4f'|format(dollar|float) }}</p><i
+                                class="fa-solid fa-caret-down fa-xs" style="color:red ;"></i>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="col-5  "
+                style="background-color: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; height: 260px; padding: 25px;">
+                <p class="">Valyuta Kalkulyatoru</p>
+                <form action="#" class="d-block col-6">
+                    <ul class="d-flex justify-content-between ps-0">
+                        <li>
+                            <div class="dropdown" style="border:solid 1px #E4E5EC; width: 80px ; border-radius: 4px;">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="font-size: 14px; color: #708390;">
+                                    Nağd
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li class="currencyli"id="currencycash"><a class="dropdown-item" href="#" style="width:100%;">Nağd</a></li>
+                                    <li class="currencyli" id="currencycash"><a class="dropdown-item" href="#" style="width:100%;">Nağdsız</a></li>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown" style="border:solid 1px #E4E5EC; width: 80px ; border-radius: 4px;">
+                                <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="font-size: 14px; color: #708390;">
+                                    Alış
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#">Alış</a></li>
+                                    <li><a class="dropdown-item" href="#">Satış</a></li>
+                                </ul>
+                            </div>
+
+                        </li>
+                    </ul>
+                </form>
+                <div class="amount d-flex justify-content-between align-items-center">
+                    <input type="number" name="selling" id="selling" class="valyuta_input"
+                        style="border: none; outline: none; font-size: 30px; font-weight: 400;" value="1">
+                    <div class="drop-list">
+                        <div class="from">
+                            <div class="select-box" style="position: relative; right: 30px; width: 30px;">
+                                <select style="border: none ; " class="dropdownselect" name="selling_select"
+                                    id="selling_select">
+                                    <option value="AZN">₼</option>
+                                    <option value="USD">$</option>
+                                    <option value="GBP">£</option>
+                                    <option value="EUR">€</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr style="height:0.5px ;">
+                <div class="exchange-rate d-flex justify-content-between align-items-center">
+                    <div class="valyuta_input" name="buying" id="buying"
+                        style="border: none; outline: none; font-size: 30px; font-weight: 400;" contentEditable=true
+                        data-text="0.5917"></div>
+                    <div class="to">
+                        <div class="select-box" style="position: relative;  width: 30px;">
+                            <select style="border: none ;" class="dropdownselect" name="buying_select"
+                                id="buying_select">
+                                <option value="USD">$</option>
+                                <option value="GBP">£</option>
+                                <option value="EUR">€</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- <div id="demo">
+
+            </div> -->
+    
+    <hr class="col-6" style="position: relative; bottom: 100px;">
+    <h5 style="font-size: 16px ; color: #708390;">Yeniləndi: <span style="color:black ;">26.05.2022</span></h5>
+    </div>
+    <div class="advertisement">
+        <div class="d-flex flex-row align-items-center justify-content-between col-9 m-auto">
+            <h3 class="d-flex">Xəbərlər və elanlar</h3>
+            <a href="" style="color: #6ebb20; display: flex; font-weight: 500;">Daha çox</a>
+        </div>
+        <hr class="col-9 " style="margin-left: 12.5%;">
+        <div>
+            <ul class="d-flex flex-row col-9 m-auto ps-0 justify-content-between">
+                {%for xeber in xeberlers%}
+                <li class="col-4">
+                    <a href="{{ url_for('xeber_func', xeberler_id = xeber.id)}}">
+                        <span style="color:#6ebb20 ;">{{xeber.xeber_tarix}}</span>
+                        <h4 style="font-size: 15px; letter-spacing: 0.7px; width: 90%;">{{xeber.xeber_basliq}}</h4>
+                    </a>
+                </li>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+{% block js%}
+<script src="{{url_for('static',filename='js/homepage.js')}}"></script>
+<script src="{{url_for('static',filename='js/credit_calculator.js')}}"></script>
+
+{% endblock %}

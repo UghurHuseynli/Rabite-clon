@@ -1,0 +1,367 @@
+{% extends 'layout.html' %}
+
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/deposit_page.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/carusel.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/share_print.css') }}">
+
+{% endblock css %}
+
+
+{% block body %}
+<div class="container-fluid display-grid mt-3">
+  <div class="d-flex justify-content-between w-100 pt-5 grid-first-div">
+    <h1 class="text-white fw-normal">{{ deposit.d_name }}</h1>
+    <a href="#" class="header-useless-button">Ətraflı</a>
+  </div>
+  <div class="grid-second-div d-flex">
+    <ul class="d-flex gap-5 ul-none  p-0 m-0">
+      <li>
+        <p class="header-section-opacity">Müddət:</p>
+        <p class="header-section-not text-nowrap">{{ deposit.time }} ayadək</p>
+      </li>
+      <li>
+        <p class="header-section-opacity">Faiz dərəcəsi:</p>
+        <p class="header-section-not text-nowrap">{{ deposit.interest }} %-dək</p>
+      </li>
+      <li>
+        <p class="header-section-opacity">Valyuta:</p>
+        <p class="header-section-not text-nowrap">{{ deposit.currency }}</p>
+      </li>
+    </ul>
+  </div>
+  <img class="img-position" src="{{ url_for('static', filename = 'images/universal_emanet.webp') }}" alt="...">
+  <div class="text-position">
+    <p class="first-info-content">{{ deposit.first_info }}</p>
+  </div>
+</div>
+
+
+<div class="solid-border"></div>
+
+
+<div class="container w-75 border-0 bg-white" style="margin-top: 3rem;">
+  <ul class="ul-none d-flex gap-5 p-0 m-0 first-ul-style">
+    {% for menu_ in menu %}
+    <li class="second-menu-title menuButton" data-menu-name='{{ menu_.menu_name }}' tabindex="0" role="button">
+      {% if menu_.menu_name %}
+      {{ menu_.menu_name }}
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="credit-content">
+  <div class="container w-75">
+    {% for menu_ in menu %}
+    <div class="required js-data-check" data-menu-check='{{ menu_.menu_name }}'>
+      {% if menu_.menu_header %}
+      <h3 class="required-title">{{ menu_.menu_header }}</h3>
+      {% endif %}
+      {% if menu_.menu_content %}
+      <p>{{ menu_.menu_content }}</p>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div class="js-data-check" data-menu-check='Əmanətlərin Sığortalanması'>
+      <p><span class="insurance-color">Daha Ətraflı:</span> <a class="text-decoration-none"
+          href="https://www.rabitabank.com/uploads/posts/2021/12/%C6%8FSF-buklet-pdf%20Sigorta.pdf">Əmanətlərin
+          Sığortalanması Fondu ⇐ </a></p>
+    </div>
+
+    <div class="mt-5 js-data-check" data-menu-check='Məhsul haqqında'>
+      <h2 class="credit-content-if-section-header">{{ deposit.d_name }} məhsulunun şərtləri</h2>
+      <div class="row">
+        <div class="col-7">
+          <table class="table caption-top">
+            <tbody>
+              {% for condition in conditions %}
+              <tr>
+                <td class="credit-if-table py-3">{{ condition.conditions_name }}</td>
+                <td class="credit-if-table-answer py-3">{{ condition.conditions_answer }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <div class="col-5 note-section d-flex">
+          <i class="fa-solid fa-circle-info fa-2xl note-section-header mt-4 me-3"></i>
+          <div>
+            <h4 class="note-section-header">Müddətin uzadılması</h4>
+            <p>Əmanət müddəti qurtardıqdan sonra ertəsi gün əmanətçi əmanətin qaytarılmasını tələb etmədikdə həmin
+              dövrdəki tarif və şərtlərdə eyni əmanət şərtləri mövcud olduğu halda həmin şərtlərlə, digər bütün hallarda
+              isə Bankın birtərəfli qaydada müəyyən etdiyi şərtlərlə uzadılır. (hesablanmış faizlər əmanət məbləğinin
+              üzərinə əlavə olunmur).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {% if interest_time %}
+  <div class="faiz-tezliyi my-5 js-data-check" data-menu-check='Məhsul haqqında'>
+    <div class="container w-75">
+      <div>
+        <h2 class="credit-content-if-section-header m-0">Hesablanmış faizlərin ödənilmə tezliyi</h2>
+        <p class="faiz-illik">faiz dərəcəsi - illik</p>
+      </div>
+      <div class="faiz-table-section my-5">
+        <table class="table faiz-table">
+          <thead>
+            <tr>
+              <form action="" method="post" class="form-button">
+                <th class="faiz-table-border" scope="col"><button class="btn btn-light faiz-button"
+                    name='select_menu_button' type="submit" value='monthly'>Aylıq</button></th>
+                <th class="faiz-table-border" scope="col"><button class="btn btn-light faiz-button"
+                    name='select_menu_button' value='quarterly'>Rüblük</button></th>
+                <th class="faiz-table-border" scope="col"><button class="btn btn-light faiz-button"
+                    name='select_menu_button' value='end'>Müddətin sonu</button></th>
+              </form>
+            </tr>
+            <tr>
+              <th class="border-0 fs-5 fw-normal" scope="col">Müddət</th>
+              <th class="border-0" scope="col"><span class="faiz-muddet-money"><i
+                    class="fa-solid fa-manat-sign me-2"></i> AZN</span></th>
+              <th class="border-0" scope="col"><span class="faiz-muddet-money"><i
+                    class="fa-solid fa-dollar-sign me-2"></i> USD</span></th>
+              <th class="border-0" scope="col"><span class="faiz-muddet-money"><i
+                    class="fa-solid fa-euro-sign me-2"></i> EURO</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for int in interest_time %}
+            <tr>
+              <td>{{ int.time }}</td>
+              <td>{{ int.azn }} {% if int.azn != '-' %} % {% endif %}</td>
+              <td>{{ int.usd }} {% if int.usd != '-' %} % {% endif %}</td>
+              <td>{{ int.euro }} {% if int.euro != '-' %} % {% endif %}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if d_xitam %}
+  <div class="muqavile-xitam js-data-check" data-menu-check='Məhsul haqqında'>
+    <div class="container w-75">
+      <div>
+        <h2 class="credit-content-if-section-header mb-3">Müqaviləyə vaxtından əvvəl xitam verildikdə faizlərin
+          hesablanması</h2>
+      </div>
+      <div>
+        <div class="row">
+          <div class="col-8">
+            <table class="table caption-top xitam-table">
+              <thead>
+                <tr>
+                  <th class="border-0 xitam-left-border xitam-fr-fh" scope="col">Müqavilənin imzalanma tarixindən
+                    əmanətin vaxtından əvvəl məxarici tarixinədək keçən günlərin sayı</th>
+                  <th class="border-0 mt-0 pt-0 xitam-fr-sh" scope="col">Əmanətin vaxtından əvvəl məxarici gününədək
+                    hesablanmış fazilərin ödəniləcək hissəsi</th>
+                </tr>
+                <tr>
+                  <th class="xitam-border xitam-left-border" scope="col"></th>
+                  <th class="xitam-border" scope="col">
+                    <ul class="ul-none d-flex justify-content-between mt-3">
+                      <li><span class="faiz-muddet-money"><i class="fa-solid fa-manat-sign me-2"></i> AZN</span></li>
+                      <li><span class="faiz-muddet-money"><i class="fa-solid fa-dollar-sign me-2"></i> USD</span></li>
+                      <li><span class="faiz-muddet-money"><i class="fa-solid fa-euro-sign me-2"></i> EURO</span></li>
+                    </ul>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for xitam in d_xitam %}
+                <tr>
+                  <td style="max-width: 25rem;">{{ xitam.time }}</td>
+                  <td>
+                    <ul class="ul-none d-flex justify-content-between ms-5">
+                      <li>{{ xitam.azn }}%</li>
+                      <li>{{ xitam.usd }}%</li>
+                      <li>{{ xitam.euro }}%</li>
+                    </ul>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div class="col-4 note-section d-flex">
+            <i class="fa-solid fa-circle-info fa-2xl note-section-header mt-4 me-3"></i>
+            <div>
+              <p>1 iyun 2020-ci il tarixindən etibarən milli valyutada olan qorunan əmanətlər üzrə illik faiz
+                dərəcəsinin
+                yuxarı həddini 12%, xarici valyutada isə 2,5% müəyyən edilib.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Print and share  -->
+    <div class="container w-75">
+      <div class="text-end">
+        {% include 'includes/share_and_print.html' %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="required w-75 container js-data-check" data-menu-check='Qoyulan Tələblər'>
+    {% for req in requier_ %}
+    <p>{{ req.condition_ }}</p>
+    {% endfor %}
+  </div>
+</div>
+
+
+<div class="bg-color-card container w-75 p-2rem my-5">
+  <h2 class="calculator-header">Əmanət kalkulyatoru</h2>
+  <p class="calculator-type">{{ deposit.d_name }}</p>
+  <div id="js-calculator-type" class="d-flex gap-3 flex-wrap justify-content-between pb-4 xitam-border" data-calculator-type = '{{ deposit.d_name }}'>
+    {% if deposit.d_name == 'Universal Əmanət' %}
+      <div class="form-floating w--48">
+        <select class="form-select" id="interest-payment" aria-label="Floating label select example">
+          <option value="Aylıq" selected>Aylıq</option>
+          <option value="Rüblük">Rüblük</option>
+          <option value="Müddətin sonu">Müddətin sonu</option>
+        </select>
+        <label for="interest-payment">Faizlərin hesablanması</label>
+      </div>
+      <div class="form-floating w--48">
+        <select class="form-select" id="select-currency" aria-label="Floating label select example">
+          <option selected>AZN</option>
+          <option value="1">USD</option>
+          <option value="1">EURO</option>
+        </select>
+        <label for="select-currency">Valyuta</label>
+      </div>
+      <div class="form-floating w--48">
+        <select class="form-select" id="select-time" aria-label="Floating label select example">
+          <option value="3" selected>3 ay</option>
+          <option value="6">6 ay</option>
+          <option value="12">12 ay</option>
+          <option value="24">24 ay</option>
+          <option value="36">36 ay</option>
+        </select>
+        <label for="select-time">Müddət</label>
+      </div>
+      <div class="form-floating w--48 position-relative range">
+        <input type="number" class="form-control" style="border-bottom: 0;" id="floatingInput" contenteditable="true">
+        <label for="floatingInput">Əmanət məbləği</label>
+        <input class=" mt-0 pt-0 position-absolute" style="top : 3.4rem;" type="range" min="200" max="1000000" value="200"
+          name="" id="rangeFloating">
+      </div>
+      <div class="form-floating w--48">
+        <select class="form-select" id="interest-degree" aria-label="Floating label select example">
+          <option value="5" selected>5 %</option>
+          <option value="0.5">0.5</option>
+          <option value="3">3</option>
+          <option value="9">9</option>
+          <option value="9.5">9.5</option>
+        </select>
+        <label for="interest-degree">Faiz dərəcəsi</label>
+      </div>
+    {% endif %}
+    
+    {% if deposit.d_name != 'Universal Əmanət' %}
+    <div class="form-floating w--48">
+      <select class="form-select" id="select-currency" aria-label="Floating label select example">
+        <option selected>AZN</option>
+        <option value="1">USD</option>
+      </select>
+      <label for="select-currency">Valyuta</label>
+    </div>
+    <div class="form-floating w--48">
+      <select class="form-select" id="select-time" aria-label="Floating label select example">
+        <option value="3" selected>3 ay</option>
+        <option value="6">6 ay</option>
+        <option value="12">12 ay</option>
+        <option value="24">24 ay</option>
+        <option value="36">36 ay</option>
+        <option value="48">48 ay</option>
+        <option value="60">60 ay</option>
+        <option value="72">72 ay</option>
+        <option value="84">84 ay</option>
+        <option value="96">96 ay</option>
+        <option value="108">108 ay</option>
+        <option value="120">120 ay</option>
+        <option value="132">132 ay</option>
+        <option value="144">144 ay</option>
+        <option value="156">156 ay</option>
+        <option value="168">168 ay</option>
+        <option value="180">180 ay</option>
+        <option value="192">192 ay</option>
+        <option value="204">204 ay</option>
+        <option value="216">216 ay</option>
+      </select>
+      <label for="select-time">Müddət</label>
+    </div>
+    <div class="form-floating w--48 position-relative range">
+      <input type="number" class="form-control" style="border-bottom: 0;" id="floatingInput" contenteditable="true">
+      <label for="floatingInput">Əmanət məbləği</label>
+      <input class=" mt-0 pt-0 position-absolute" style="top : 3.4rem;" type="range" min="200" max="1000000" value="200"
+        name="" id="rangeFloating">
+    </div>
+    <div class="form-floating w--48">
+      <select class="form-select" id="interest-degree" aria-label="Floating label select example">
+        <option value="5" selected>5 %</option>
+      </select>
+      <label for="interest-degree">Faiz dərəcəsi</label>
+    </div>
+  {% endif %}
+  </div>
+  <div class="mt-5 w--48">
+    <div type="text" class="border-0 bg-color-card mh-38 d-flex gap-5" contenteditable="false">
+      <div>
+        <p class="calculator-type">Əldə olunan gəlir</p>
+        <p class="calculator-header" id="interest-payment-money">asdfadsf</p>
+      </div>
+      <div>
+        <p class="calculator-type">Yekun məbləğ</p>
+        <p class="calculator-header" id="interest-money-all">fsdgsdfg</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container w-75">
+  <h3 class="offer-title">Sizin üçün ən yaxşı təkliflər</h3>
+  <div class="m-0 mt-5">
+    {% if not camp %}
+    <p class="no-content"><i class="fa-solid fa-file-lines me-2"></i> Bu kategoriya üzrə heç bir məlumat
+      yoxdur.</p>
+    {% else %}
+    <div class="d-flex flex-wrap">
+      {% for ele in camp %}
+        <div class="card-eleement bg-color-card p-2rem hover-ele d-flex w--48">
+          <div class="w-50">
+            <p class="card-type">{{ ele.category }}</p>
+            <p class="card-content">{{ ele.title }}</p>
+            <a href="{{ ele.more_url }}" type="button" class="card-button">Daha ətraflı</a>
+          </div>
+          <img src="{{ url_for('static', filename = 'images/') }}{{ ele.img }}"
+            class="img-size align-self-end d-flex justify-content-end" alt="...">
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="container w-75">
+  {% include 'includes/slider.html' %}
+</div>
+
+
+{% endblock body %}
+
+
+{% block js %}
+<script src="{{ url_for('static', filename = 'js/deposit_page.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/share_print.js') }}"></script>
+{% endblock js %}

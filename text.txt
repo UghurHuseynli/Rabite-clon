@@ -1,0 +1,137 @@
+from models import *
+
+xeber1= xeberler(xeber_basliq="Sahibkarsınız? Biznesinizi daha rahat və sürətli böyüdə bilərsiniz!",xeber_etrafli="Kredit növləri arasında ən çox seçilən nağd pul kreditlərindən biri də sahibkarların biznes yolunda müraciət etdiyi Mikrokreditdir. Bu yazımızda Mikrokreditlə bağlı sahibkarlara maraqlı olan sualları və krediti əldə etmək üçün keçməli olduğunuz prosedurları izah edəcəyik.
+
+Mikrokredit nədir, kimlər əldə edə bilər?
+
+Mikrokredit, mikro və kiçik sahibkarlıq subyektlərinin inkişafına dəstək üçün nəzərdə tutulmuş kredit növüdür. Aşağı faiz dərəcələri, komissiya faizinin olmamasına, əlverişli təminat şərtləri və operativliyinə görə sahibkarlar üçün çox uyğundur.
+
+Hal-hazırda Rabitəbank-da aktiv olan Mikrokreditlər üzrə yaz kampaniyasından Kənd Təsərrüfatı, Ticarət, İstehsalat, Xidmət və Nəqliyyat sahəsində çalışan bütün sahibkarlar yararlana bilərlər. Nəzərdə tutulan kreditin məbləği 50 000 AZN-dəkdir.
+
+Sahibkar 50 000 AZN mikrokrediti əldə etmək üçün hansı prosedurlardan keçməlidir?
+
+Rabitəbankdan Mikrokredit əldə etmə proseduru da çox asandır. Sahibkarın biznes fəaliyyətinə dair sənədləri (Şəxsiyyət vəsiqəsi, VÖEN, borcalanın biznesini təsdiq edən sənədlər) varsa, banka təqdim etməlidir. Daha sonra biznes fəaliyyətinə baxış keçirilir və müştərinin ödəniş qabiliyyəti müəyyən edilir.
+
+Mikrokreditin müddəti və şərtləri nələrdir?
+
+Kreditin müddəti 36 ayadəkdir. Həmçinin, müsbət tarixçəsi olan müştərilərə onların hər bir il kredit tarixçəsinə 1% endirim tətbiq olunacaq.
+
+Qeyd edək ki, Rabitəbankda aktiv olan Mikrokreditlər üzrə yay kampaniyası 31 may tarixinədək keçərlidir.
+
+Mikrokrediti necə əldə etmək olar?
+
+Rabitəbankın təklif etdiyi mikrokredit kampaniyasını onlayn https://rbt.az/micro sifarişlə, həmçinin sizə yaxın olan filiala yaxınlaşaraq https://www.rabitabank.com/filiallar əldə etmək mümkündür.",xeber_sekil="https://www.rabitabank.com/uploads/posts/2022/05/mikrokredit%20banner%20press%20release%20copy.png",xeber_tarix="19/05/2022")
+xeber2= xeberler(xeber_basliq="Rabitəbank və “Budapest Institute of Banking”in rəhbərləri arasında önəmli görüş!",xeber_etrafli="Macarıstanda rəsmi səfərdə olan Rabitəbank-ın İdarə Heyətinin Sədri Aydın Hüseynov, səfər zamanı Budapeşt şəhərində yerləşən “Budapest Institute of Banking”in (BIB) İcraçı Direktoru Fábián Gergely ilə görüş keçirmişdir. Görüşdə Rabitəbank ilə İnstitut arasında əməkdaşlıq imkanlarının genişləndirilməsi mövzusunda müzakirələr aparılmşdır. Rabitəbank-ın işçi heyətinin bankçılıq sahəsində bilik və bacarıqlarının artırılması ilə bağlı danışıqlar keçirilmiş və əməkdaşlıq memorandumunun imzalanması istiqamətində müzakirələr aparılmışdır.
+
+Qeyd edək ki, BIB, bank işi və maliyyə üzrə təlimlər təklif edən təhsil institutudur. Təlim kursları çərçivəsində bazar tələblərinə uyğunlaşdırılmış müasir, innovativ və təcrübəyə əsaslanan ambisiyalara nail olunur.
+
+Bundan öncə də bank əməkdaşlarının maliyyə və iqtisadiyyat sahəsində ən müasir biliklərə yiyələnmələri üçün bir çox tədbirlər keçirən Rabitəbank-ın əsas məqsədlərindən biri əməkdaşlarının çalışdıqları sahə üzrə təcrübələrinə beynəlxalq təcrübələr qatmaqdır.
+
+Aydın Hüseynov həmçinin bildirib ki, bankın yeni strategiyasına əsasən bank, daim işçi heyətinin peşəkar inkişafına yatırımlar edir və bu cür beynəlxalq təcrübələr qazanan ekspertlərimiz müasir biliklərə yiyələnərək sektorda ciddi rəqabət yaradacaqdır. 
+
+"Rabitəbank" ASC, Azərbaycanın 16 regionu və Bakı şəhərində 27 xidmət məntəqəsi və 74 ATM-i, "Rabita Mobile" tətbiqi, İnternet Bankçılıq platforması və "RabitaBot" çatbotu, 133 nömrəli Çağrı Mərkəzi ilə müştərilərin xidmətindədir.",xeber_sekil="https://www.rabitabank.com/uploads/posts/2022/05/BIB%20meeting%20photo.png",xeber_tarix="18/05/22")
+xeber3= xeberler(xeber_basliq="Rabitəbank şəhid ailəsinə fərdi sahibkarlıqla bağlı dəstək göstərdi",xeber_etrafli="Rabitəbank şəhid ailəsinə fərdi sahibkarlıqla bağlı dəstək göstərdi
+
+ 
+
+Rabitəbank, “Özünüməşğulluq Layihəsi” çərçivəsində şəhid atasını fərdi sahibkarlıqla məşğul olmaq üçün lazım olan avadanlıqlarla təmin edib.
+
+22.04.22 tarixində Rabitəbank əməkdaşları Özünüməşğulluq layihəsi ilə bağlı siyahıda olan Ağcabədi rayon sakini, şəhid atası Həziyev Feyruz Namət oğlu ilə görüşmüş və monitorinq zamanı Həziyev Feyruz Namət oğluna “Döşəmə və Parket cilalanması xidməti üzrə” avadanlıqların və ləvazimatların ehtiyac olduğu aşkarlanaraq həmin avadanlıqlarla təmin olunmuşdur.
+
+Özünüməşğulluq layihəsi Əmək və Əhalinin Sosial Müdafiəsi Nazirliyi, Mərkəzi Bank və Azərbaycan Banklar Assosiasiyası arasında imzalanan Memoranduma əsasən həyata keçirilir.
+
+Qeyd edək ki, şəhid Həziyev Xəyal Feyruz oğlu 15.10.2020-ci il tarixində Füzuli istiqamətində gedən döyüşlərdə könüllü olaraq iştirak edərək şəhid olmuşdur. Vətən uğrunda canından keçən şəhidlərimizi hörmətlə anır, şəhid ailələrinin qarşısında baş əyirik.
+
+Rabitəbank bundan sonra da Özünüməşğulluq Layihəsi çərçivəsində daxil olan müraciətlərə əsasən vətəndaşlar üçün əvəzsiz olaraq müasir standartlara cavab verən avadanlıqların təmin olunmasında dəstək göstərəcəyini vurğulayıb.
+
+"Rabitəbank" ASC, Azərbaycanın 16 regionu və Bakı şəhərində 27 xidmət məntəqəsi və 74 ATM-i, "Rabita Mobile" tətbiqi, İnternet Bankçılıq platforması və "RabitaBot" çatbotu, 133 nömrəli Çağrı Mərkəzi ilə müştərilərin xidmətindədir.",xeber_sekil="https://www.rabitabank.com/uploads/posts/2022/04/fvfv.png",xeber_tarix="26/04/2022")
+
+
+
+
+
+
+
+
+
+
+Sahibkarsınız? Biznesinizi daha rahat və sürətli böyüdə bilərsiniz!
+
+
+
+Kredit növləri arasında ən çox seçilən nağd pul kreditlərindən biri də sahibkarların biznes yolunda müraciət etdiyi Mikrokreditdir. Bu yazımızda Mikrokreditlə bağlı sahibkarlara maraqlı olan sualları və krediti əldə etmək üçün keçməli olduğunuz prosedurları izah edəcəyik.
+
+Mikrokredit nədir, kimlər əldə edə bilər?
+
+Mikrokredit, mikro və kiçik sahibkarlıq subyektlərinin inkişafına dəstək üçün nəzərdə tutulmuş kredit növüdür. Aşağı faiz dərəcələri, komissiya faizinin olmamasına, əlverişli təminat şərtləri və operativliyinə görə sahibkarlar üçün çox uyğundur.
+
+Hal-hazırda Rabitəbank-da aktiv olan Mikrokreditlər üzrə yaz kampaniyasından Kənd Təsərrüfatı, Ticarət, İstehsalat, Xidmət və Nəqliyyat sahəsində çalışan bütün sahibkarlar yararlana bilərlər. Nəzərdə tutulan kreditin məbləği 50 000 AZN-dəkdir.
+
+Sahibkar 50 000 AZN mikrokrediti əldə etmək üçün hansı prosedurlardan keçməlidir?
+
+Rabitəbankdan Mikrokredit əldə etmə proseduru da çox asandır. Sahibkarın biznes fəaliyyətinə dair sənədləri (Şəxsiyyət vəsiqəsi, VÖEN, borcalanın biznesini təsdiq edən sənədlər) varsa, banka təqdim etməlidir. Daha sonra biznes fəaliyyətinə baxış keçirilir və müştərinin ödəniş qabiliyyəti müəyyən edilir.
+
+Mikrokreditin müddəti və şərtləri nələrdir?
+
+Kreditin müddəti 36 ayadəkdir. Həmçinin, müsbət tarixçəsi olan müştərilərə onların hər bir il kredit tarixçəsinə 1% endirim tətbiq olunacaq.
+
+Qeyd edək ki, Rabitəbankda aktiv olan Mikrokreditlər üzrə yay kampaniyası 31 may tarixinədək keçərlidir.
+
+Mikrokrediti necə əldə etmək olar?
+
+Rabitəbankın təklif etdiyi mikrokredit kampaniyasını onlayn https://rbt.az/micro sifarişlə, həmçinin sizə yaxın olan filiala yaxınlaşaraq https://www.rabitabank.com/filiallar əldə etmək mümkündür.    
+
+
+https://www.rabitabank.com/uploads/posts/2022/05/mikrokredit%20banner%20press%20release%20copy.png
+
+19/05/2022
+
+
+
+
+
+
+Rabitəbank və “Budapest Institute of Banking”in rəhbərləri arasında önəmli görüş!
+
+
+
+"Macarıstanda rəsmi səfərdə olan Rabitəbank-ın İdarə Heyətinin Sədri Aydın Hüseynov, səfər zamanı Budapeşt şəhərində yerləşən “Budapest Institute of Banking”in (BIB) İcraçı Direktoru Fábián Gergely ilə görüş keçirmişdir. Görüşdə Rabitəbank ilə İnstitut arasında əməkdaşlıq imkanlarının genişləndirilməsi mövzusunda müzakirələr aparılmşdır. Rabitəbank-ın işçi heyətinin bankçılıq sahəsində bilik və bacarıqlarının artırılması ilə bağlı danışıqlar keçirilmiş və əməkdaşlıq memorandumunun imzalanması istiqamətində müzakirələr aparılmışdır.
+
+Qeyd edək ki, BIB, bank işi və maliyyə üzrə təlimlər təklif edən təhsil institutudur. Təlim kursları çərçivəsində bazar tələblərinə uyğunlaşdırılmış müasir, innovativ və təcrübəyə əsaslanan ambisiyalara nail olunur.
+
+Bundan öncə də bank əməkdaşlarının maliyyə və iqtisadiyyat sahəsində ən müasir biliklərə yiyələnmələri üçün bir çox tədbirlər keçirən Rabitəbank-ın əsas məqsədlərindən biri əməkdaşlarının çalışdıqları sahə üzrə təcrübələrinə beynəlxalq təcrübələr qatmaqdır.
+
+Aydın Hüseynov həmçinin bildirib ki, bankın yeni strategiyasına əsasən bank, daim işçi heyətinin peşəkar inkişafına yatırımlar edir və bu cür beynəlxalq təcrübələr qazanan ekspertlərimiz müasir biliklərə yiyələnərək sektorda ciddi rəqabət yaradacaqdır. 
+
+"Rabitəbank" ASC, Azərbaycanın 16 regionu və Bakı şəhərində 27 xidmət məntəqəsi və 74 ATM-i, "Rabita Mobile" tətbiqi, İnternet Bankçılıq platforması və "RabitaBot" çatbotu, 133 nömrəli Çağrı Mərkəzi ilə müştərilərin xidmətindədir.
+
+
+https://www.rabitabank.com/uploads/posts/2022/05/BIB%20meeting%20photo.png
+
+18/05/2022
+
+
+
+
+
+
+Rabitəbank şəhid ailəsinə fərdi sahibkarlıqla bağlı dəstək göstərdi
+
+
+
+Rabitəbank şəhid ailəsinə fərdi sahibkarlıqla bağlı dəstək göstərdi
+
+Rabitəbank, “Özünüməşğulluq Layihəsi” çərçivəsində şəhid atasını fərdi sahibkarlıqla məşğul olmaq üçün lazım olan avadanlıqlarla təmin edib.
+
+22.04.22 tarixində Rabitəbank əməkdaşları Özünüməşğulluq layihəsi ilə bağlı siyahıda olan Ağcabədi rayon sakini, şəhid atası Həziyev Feyruz Namət oğlu ilə görüşmüş və monitorinq zamanı Həziyev Feyruz Namət oğluna “Döşəmə və Parket cilalanması xidməti üzrə” avadanlıqların və ləvazimatların ehtiyac olduğu aşkarlanaraq həmin avadanlıqlarla təmin olunmuşdur.
+
+Özünüməşğulluq layihəsi Əmək və Əhalinin Sosial Müdafiəsi Nazirliyi, Mərkəzi Bank və Azərbaycan Banklar Assosiasiyası arasında imzalanan Memoranduma əsasən həyata keçirilir.
+
+Qeyd edək ki, şəhid Həziyev Xəyal Feyruz oğlu 15.10.2020-ci il tarixində Füzuli istiqamətində gedən döyüşlərdə könüllü olaraq iştirak edərək şəhid olmuşdur. Vətən uğrunda canından keçən şəhidlərimizi hörmətlə anır, şəhid ailələrinin qarşısında baş əyirik.
+
+Rabitəbank bundan sonra da Özünüməşğulluq Layihəsi çərçivəsində daxil olan müraciətlərə əsasən vətəndaşlar üçün əvəzsiz olaraq müasir standartlara cavab verən avadanlıqların təmin olunmasında dəstək göstərəcəyini vurğulayıb.
+
+"Rabitəbank" ASC, Azərbaycanın 16 regionu və Bakı şəhərində 27 xidmət məntəqəsi və 74 ATM-i, "Rabita Mobile" tətbiqi, İnternet Bankçılıq platforması və "RabitaBot" çatbotu, 133 nömrəli Çağrı Mərkəzi ilə müştərilərin xidmətindədir.
+
+https://www.rabitabank.com/uploads/posts/2022/04/fvfv.png
+26/04/2022

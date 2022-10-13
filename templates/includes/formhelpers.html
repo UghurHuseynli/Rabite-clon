@@ -1,0 +1,14 @@
+{% macro render_field(field) %}
+  <div class="form-floating w--48">
+    {{ field(**kwargs)|safe }}
+    {{ field.label(class='form-label') }}
+    {% if field.errors %}
+    <ul class=errors>
+      {% for error in field.errors %}
+      <li class="text-danger">{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+{% endmacro %}
+

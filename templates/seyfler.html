@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/deposit_page.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/carusel.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/share_print.css') }}">
+{% endblock css %}
+
+
+{% block body %}
+<div class="container-fluid d-flex justify-content-around align-items-center mb-5 mt-3 gb-linear-ferdi">
+  <div>
+    <h1 class="text-white fw-normal">{{ deposit.d_name }}</h1>
+    <p class="text-white fs-5 fw-light w-75">{{ deposit.first_info }}</p>
+  </div>
+  <div><img class="w-75" src="{{ url_for('static', filename = 'images/ind_deposit.png') }}" style="object-fit: fill;"
+      alt="..."></div>
+</div>
+
+<div class="faiz-tezliyi my-5 bg-color-card p-5">
+  <div class="container w-75">
+    <div>
+      <h2 class="credit-content-if-section-header m-0 w-25">Saxlanc seyflərinin icarə haqqı</h2>
+    </div>
+    <div class="faiz-table-section my-5">
+      <table class="table faiz-table">
+        <thead>
+          <tr>
+            <th class="faiz-table-border" scope="col"><p class="btn btn-light faiz-button faiz-button-active seyf-button fs-5">Baş ofis</p></th>
+            <th class="faiz-table-border" scope="col"><p class="btn btn-light faiz-button seyf-button fs-5">Mərkəz filialı</p></th>
+            <th class="faiz-table-border" scope="col"><p class="btn btn-light faiz-button seyf-button fs-5">Nəsimi filialı</p></th>
+            <th class="faiz-table-border" scope="col"><p class="btn btn-light faiz-button seyf-button fs-5">Nərimanov filialı</p></th>
+          </tr>
+        </thead>
+        <tbody id="seyf-section">
+          {% for main_ofis in main_office %}
+            <tr data-type-seyf = 'Baş ofis'>
+              <td>{{ main_ofis.box_size }}</td>
+              <td>Aylıq {{ main_ofis.payment_month }} AZN</td>
+              <td>İllik {{ main_ofis.payment_year }} AZN</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+          {% for main_br in main_branch %}
+            <tr data-type-seyf = 'Mərkəz filialı'>
+              <td>{{ main_br.box_size }}</td>
+              <td>Aylıq {{ main_br.payment_month }} AZN</td>
+              <td>İllik {{ main_br.payment_year }} AZN</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+          {% for nes_br in nesimi_branch %}
+            <tr data-type-seyf = 'Nəsimi filialı'>
+              <td>{{ nes_br.box_size }}</td>
+              <td>Aylıq {{ nes_br.payment_month }} AZN</td>
+              <td>İllik {{ nes_br.payment_year }} AZN</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+          {% for ner_br in nerimanov_branch %}
+            <tr data-type-seyf = 'Nərimanov filialı'>
+              <td>{{ ner_br.box_size }}</td>
+              <td>Aylıq {{ ner_br.payment_month }} AZN</td>
+              <td>İllik {{ ner_br.payment_year }} AZN</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Print and share  -->
+<div class="container w-75 my--5">
+  {% include 'includes/share_and_print.html' %}
+</div>
+</div>
+
+{% endblock body %}
+
+
+{% block js %}
+<script src="{{ url_for('static', filename = 'js/seyf.js') }}"></script>
+<script src="{{ url_for('static', filename = 'js/share_print.js') }}"></script>
+{% endblock js %}

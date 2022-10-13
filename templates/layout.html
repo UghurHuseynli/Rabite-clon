@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css tag  -->
+    <script src="https://kit.fontawesome.com/65f009dc64.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/footer.css') }}">
+    {% block css %}{% endblock css %}
+    {% block title %}
+    <title>Rabitəbank</title>
+    {% endblock title %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'images/favicon.ico') }}" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            position: relative;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            font-family: "Roboto", sans-serif;
+            color: #2e384d;
+        }
+
+        a.active {
+            color: #2e384d;
+        }
+
+        .downul>li {
+            margin-right: 10px;
+        }
+
+        .downul>li>a {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        a:hover {
+            cursor: pointer;
+            color: green;
+        }
+
+        .card:hover {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition: box-shadow 0.7s ease-in-out;
+        }
+
+        .radialup {
+            width: 100%;
+            height: 400px;
+            background-image: radial-gradient(circle at 90% 0px, rgb(110, 187, 32), rgb(18, 148, 80));
+
+        }
+
+        button {
+            font-family: "Roboto", sans-serif;
+        }
+
+        .radialdown {
+            height: 400px;
+            background-color: #f8fafb;
+        }
+
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 108%;
+            position: relative;
+            left: -10px;
+            height: 5px;
+            border-radius: 2px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            box-shadow: 0 4px 16px 0 rgb(109 98 248 / 30%);
+            border: solid 4px white;
+            border-radius: 50%;
+            background: #6ebb20;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #6ebb20;
+            cursor: pointer;
+        }
+
+        .currencyli:hover {
+            background: #6ebb20;
+        }
+
+        .dropdownselect {
+            appearance: none;
+            padding-right: 15px;
+            background-image: url(https://www.rabitabank.com/assets/css/images/select_arrow_down.png);
+            background-repeat: no-repeat;
+            background-position: calc(100% - -11px) center;
+        }
+
+        .nagdpul:hover {
+            background-color: #2E384D;
+        }
+
+        .nagdpul {
+            background-color: #6ebb20;
+        }
+
+        .slider2btn:hover {
+            background-color: #6ebb20;
+        }
+
+        .slider2btn {
+            background-color: #2E384D;
+        }
+
+        .header {
+            z-index: 1;
+            background-color: white;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .sticky+.content {
+            padding-top: 102px;
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'includes/header.html' %}
+    {% include 'includes/message.html' %}
+    <div class="modal" tabindex="-1" id="share-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dostlarınızla paylaşın</h5>
+                    <button type="button" id="modal-close" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body d-flex align-items-center justify-content-center" style="height: 10rem;">
+                    <ul class="ul-none d-flex gap-4">
+                        <li><a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-2xl"
+                                    style="color: #3b5998;"></i></a></li>
+                        <li><a href="https://twitter.com/"><i class="fa-brands fa-twitter fa-2xl"
+                                    style="color: #00acee;"></i></a>
+                        </li>
+                        <li><a href="https://www.linkedin.com/"><i class="fa-brands fa-linkedin fa-2xl"
+                                    style="color: #0e76a8;"></i></a></li>
+                        <li><a href="https://www.whatsapp.com/"><i class="fa-brands fa-whatsapp-square fa-2xl"
+                                    style="color: #4fce5d;"></i></a></li>
+                        <li><a href="https://web.telegram.org/"><i class="fa-brands fa-telegram fa-2xl"
+                                    style="color: #37aee2;"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% block body %}
+
+    {% endblock body %}
+
+
+
+    {% include 'includes/footer.html' %}
+    <!-- Script tag -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    {% block js %}{% endblock js %}
+</body>

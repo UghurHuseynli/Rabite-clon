@@ -1,0 +1,14 @@
+{% macro render_field_interest(field) %}
+    {{ field.label(style="color:#708390 ; font-size: 12px;") }}
+    <p style="margin: 0; height: 15px;"><span id="demo3"></span> %</p>
+    <div class="slidecontainer">
+        {{ field(**kwargs)|safe }}
+    </div>
+    {% if field.errors %}
+    <ul class=errors>
+      {% for error in field.errors %}
+      <li class="text-danger">{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+{% endmacro %}
