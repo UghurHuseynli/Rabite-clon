@@ -8,21 +8,32 @@ from datetime import datetime
 def load_user(user_id):
     return User.query.get(user_id)
 
-# Deposit page 
-class Deposit(db.Model):
-    __tablename__ = 'Deposit'
 
-    def __init__(self, d_name, time, interest, currency, img_url, deatil_slug, deposit_type, first_info):
-        self.d_name = d_name 
-        self.time = time 
-        self.interest = interest 
+# Deposit page
+class Deposit(db.Model):
+    __tablename__ = "Deposit"
+
+    def __init__(
+        self,
+        d_name,
+        time,
+        interest,
+        currency,
+        img_url,
+        deatil_slug,
+        deposit_type,
+        first_info,
+    ):
+        self.d_name = d_name
+        self.time = time
+        self.interest = interest
         self.currency = currency
         self.img_url = img_url
         self.detail_slug = deatil_slug
         self.deposit_type = deposit_type
         self.first_info = first_info
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     d_name = db.Column(db.String(40))
     time = db.Column(db.Integer)
     interest = db.Column(db.Float)
@@ -31,7 +42,7 @@ class Deposit(db.Model):
     detail_slug = db.Column(db.String(100))
     deposit_type = db.Column(db.String(20))
     first_info = db.Column(db.String(500))
-    
+
     def __repr__(self):
         return self.d_name
 
@@ -39,12 +50,13 @@ class Deposit(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class D_menu(db.Model):
-    __tablename__ = 'D_menu'
+    __tablename__ = "D_menu"
 
     def __init__(self, menu_name, menu_header, menu_content, deposit_id):
         self.menu_name = menu_name
-        self.menu_header = menu_header  
+        self.menu_header = menu_header
         self.menu_content = menu_content
         self.deposit_id = deposit_id
 
@@ -52,8 +64,8 @@ class D_menu(db.Model):
     menu_name = db.Column(db.String(50))
     menu_header = db.Column(db.String(200))
     menu_content = db.Column(db.String(1000))
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('D_menu', lazy='dynamic'))
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship("Deposit", backref=db.backref("D_menu", lazy="dynamic"))
 
     def __repr__(self):
         return self.menu_name
@@ -62,8 +74,9 @@ class D_menu(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class D_xitam(db.Model):
-    __tablename__ = 'D_xitam'
+    __tablename__ = "D_xitam"
 
     def __init__(self, time, azn, usd, euro, deposit_id):
         self.time = time
@@ -72,13 +85,13 @@ class D_xitam(db.Model):
         self.euro = euro
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(50))
-    azn = db.Column(db.String(10), default = '-')
-    usd = db.Column(db.String(10), default = '-')
-    euro = db.Column(db.String(10), default = '-')
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('D_xitam', lazy='dynamic'))
+    azn = db.Column(db.String(10), default="-")
+    usd = db.Column(db.String(10), default="-")
+    euro = db.Column(db.String(10), default="-")
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship("Deposit", backref=db.backref("D_xitam", lazy="dynamic"))
 
     def __repr__(self):
         return self.time
@@ -86,9 +99,10 @@ class D_xitam(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Interest_monthly(db.Model):
-    __tablename__ = 'Interest_monthly'
+    __tablename__ = "Interest_monthly"
 
     def __init__(self, time, azn, usd, euro, deposit_id):
         self.time = time
@@ -97,13 +111,15 @@ class Interest_monthly(db.Model):
         self.euro = euro
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(50))
-    azn = db.Column(db.String(10), default = '-')
-    usd = db.Column(db.String(10), default = '-')
-    euro = db.Column(db.String(10), default = '-')
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Interest_monthly', lazy='dynamic'))
+    azn = db.Column(db.String(10), default="-")
+    usd = db.Column(db.String(10), default="-")
+    euro = db.Column(db.String(10), default="-")
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Interest_monthly", lazy="dynamic")
+    )
 
     def __repr__(self):
         return self.time
@@ -111,9 +127,10 @@ class Interest_monthly(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Interest_quarterly(db.Model):
-    __tablename__ = 'Interest_quarterly'
+    __tablename__ = "Interest_quarterly"
 
     def __init__(self, time, azn, usd, euro, deposit_id):
         self.time = time
@@ -122,23 +139,26 @@ class Interest_quarterly(db.Model):
         self.euro = euro
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(50))
-    azn = db.Column(db.String(10), default = '-')
-    usd = db.Column(db.String(10), default = '-')
-    euro = db.Column(db.String(10), default = '-')
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Interest_quarterly', lazy='dynamic'))
-    
+    azn = db.Column(db.String(10), default="-")
+    usd = db.Column(db.String(10), default="-")
+    euro = db.Column(db.String(10), default="-")
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Interest_quarterly", lazy="dynamic")
+    )
+
     def __repr__(self):
         return self.time
 
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Interest_end(db.Model):
-    __tablename__ = 'Interest_end'
+    __tablename__ = "Interest_end"
 
     def __init__(self, time, azn, usd, euro, deposit_id):
         self.time = time
@@ -147,13 +167,15 @@ class Interest_end(db.Model):
         self.euro = euro
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     time = db.Column(db.String(50))
-    azn = db.Column(db.String(10), default = '-')
-    usd = db.Column(db.String(10), default = '-')
-    euro = db.Column(db.String(10), default = '-')
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Interest_end', lazy='dynamic'))
+    azn = db.Column(db.String(10), default="-")
+    usd = db.Column(db.String(10), default="-")
+    euro = db.Column(db.String(10), default="-")
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Interest_end", lazy="dynamic")
+    )
 
     def __repr__(self):
         return self.time
@@ -162,37 +184,39 @@ class Interest_end(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class Requier(db.Model):
-    __tablename__ = 'Requier'
+    __tablename__ = "Requier"
 
     def __init__(self, condition_, deposit_id):
         self.condition_ = condition_
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     condition_ = db.Column(db.String(500))
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Requier', lazy='dynamic'))
-
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship("Deposit", backref=db.backref("Requier", lazy="dynamic"))
 
     def save(self):
         db.session.add(self)
         db.session.commit()
 
+
 class D_conditions(db.Model):
-    __tablename__ = 'D_conditions'
+    __tablename__ = "D_conditions"
 
     def __init__(self, conditions_name, conditions_answer, deposit_id):
         self.conditions_name = conditions_name
         self.conditions_answer = conditions_answer
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     conditions_name = db.Column(db.String(100))
     conditions_answer = db.Column(db.String(500))
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('D_conditions', lazy='dynamic'))
-
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("D_conditions", lazy="dynamic")
+    )
 
     def __repr__(self):
         return self.conditions_name
@@ -201,93 +225,104 @@ class D_conditions(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class Main_office(db.Model):
-    __tablename__ = 'Main_office'
+    __tablename__ = "Main_office"
 
     def __init__(self, box_size, payment_month, payment_year, deposit_id):
-        self.box_size = box_size 
+        self.box_size = box_size
         self.payment_month = payment_month
         self.payment_year = payment_year
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     box_size = db.Column(db.String(100))
     payment_month = db.Column(db.Integer)
     payment_year = db.Column(db.Integer)
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Main_office', lazy='dynamic'))
-
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Main_office", lazy="dynamic")
+    )
 
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Main_branch(db.Model):
-    __tablename__ = 'Main_branch'
+    __tablename__ = "Main_branch"
 
     def __init__(self, box_size, payment_month, payment_year, deposit_id):
-        self.box_size = box_size 
+        self.box_size = box_size
         self.payment_month = payment_month
         self.payment_year = payment_year
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     box_size = db.Column(db.String(100))
     payment_month = db.Column(db.Integer)
     payment_year = db.Column(db.Integer)
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Main_branch', lazy='dynamic'))
-
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Main_branch", lazy="dynamic")
+    )
 
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Nesimi_branch(db.Model):
-    __tablename__ = 'Nesimi_branch'
+    __tablename__ = "Nesimi_branch"
 
     def __init__(self, box_size, payment_month, payment_year, deposit_id):
-        self.box_size = box_size 
+        self.box_size = box_size
         self.payment_month = payment_month
         self.payment_year = payment_year
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     box_size = db.Column(db.String(100))
     payment_month = db.Column(db.Integer)
     payment_year = db.Column(db.Integer)
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Nesimi_branch', lazy='dynamic'))
-
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Nesimi_branch", lazy="dynamic")
+    )
 
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class Nerimanov_branch(db.Model):
-    __tablename__ = 'Nerimanov_branch'
+    __tablename__ = "Nerimanov_branch"
 
     def __init__(self, box_size, payment_month, payment_year, deposit_id):
-        self.box_size = box_size 
+        self.box_size = box_size
         self.payment_month = payment_month
         self.payment_year = payment_year
         self.deposit_id = deposit_id
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     box_size = db.Column(db.String(100))
     payment_month = db.Column(db.Integer)
     payment_year = db.Column(db.Integer)
-    deposit_id = db.Column(db.Integer, db.ForeignKey('Deposit.id'))
-    Deposit = db.relationship('Deposit', backref=db.backref('Nerimanov_branch', lazy='dynamic'))
+    deposit_id = db.Column(db.Integer, db.ForeignKey("Deposit.id"))
+    Deposit = db.relationship(
+        "Deposit", backref=db.backref("Nerimanov_branch", lazy="dynamic")
+    )
 
     def save(self):
         db.session.add(self)
         db.session.commit()
 
-# credit offer 
+
+# credit offer
+
 
 class Credit_offer(db.Model):
-    __tablename__ = 'Credit_offer'
+    __tablename__ = "Credit_offer"
 
     def __init__(self, username, time, money, interest):
         self.username = username
@@ -295,8 +330,8 @@ class Credit_offer(db.Model):
         self.money = money
         self.interest = interest
 
-    id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(50), nullable = False)
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(50), nullable=False)
     time = db.Column(db.String(40), nullable=False)
     money = db.Column(db.String(40), nullable=False)
     interest = db.Column(db.String(20), nullable=False)
@@ -305,17 +340,20 @@ class Credit_offer(db.Model):
         db.session.add(self)
         db.session.commit()
 
-# deposit offer model 
+
+# deposit offer model
+
 
 class Deposit_offer(db.Model):
-    __tablename__ = 'Deposit_offer'
+    __tablename__ = "Deposit_offer"
+
     def __init__(self, name, surname, phone, deposit_type):
         self.name = name
         self.surname = surname
         self.phone = phone
         self.deposit_type = deposit_type
 
-    id = db.Column(db.Integer, primary_key = True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(40), nullable=False)
     surname = db.Column(db.String(40), nullable=False)
     phone = db.Column(db.String(20), nullable=False)
@@ -328,9 +366,10 @@ class Deposit_offer(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 # Campaigns
 class Campaigns(db.Model):
-    __tablename__ = 'Campaigns'
+    __tablename__ = "Campaigns"
 
     def __init__(self, img, more_url, title, category, filter_category_card):
         self.img = img
@@ -339,9 +378,9 @@ class Campaigns(db.Model):
         self.category = category
         self.filter_category_card = filter_category_card
 
-    id = db.Column(db.Integer, primary_key = True)
-    img = db.Column(db.String(255), nullable = False)
-    more_url = db.Column(db.String(1000), default = '#')
+    id = db.Column(db.Integer, primary_key=True)
+    img = db.Column(db.String(255), nullable=False)
+    more_url = db.Column(db.String(1000), default="#")
     title = db.Column(db.String(1000))
     category = db.Column(db.String(30))
     filter_category_card = db.Column(db.String(30))
@@ -349,10 +388,25 @@ class Campaigns(db.Model):
     def __repr__(self):
         return self.title
 
+
 # Card offer page
 class Card_offer(db.Model):
-    __tablename__ = 'Card_offer'
-    def __init__(self, card_name, card_type, card_currency, card_use_time, card_office, user_name, user_lastname, user_email, user_phone, front_img, back_img):
+    __tablename__ = "Card_offer"
+
+    def __init__(
+        self,
+        card_name,
+        card_type,
+        card_currency,
+        card_use_time,
+        card_office,
+        user_name,
+        user_lastname,
+        user_email,
+        user_phone,
+        front_img,
+        back_img,
+    ):
         self.card_name = card_name
         self.card_type = card_type
         self.card_currency = card_currency
@@ -385,105 +439,115 @@ class Card_offer(db.Model):
         db.session.add(self)
         db.session.commit()
 
+
 class Card_name(db.Model):
-    __tablename__ = 'Card_name'
+    __tablename__ = "Card_name"
+
     def __init__(self, name):
         self.name = name
-    
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
 
     def __repr__(self):
         return self.name
-    
+
     def save(self):
         db.session.add(self)
         db.session.commit()
 
+
 class Card_type(db.Model):
-    __tablename__ = 'Card_type'
+    __tablename__ = "Card_type"
 
     def __init__(self, type_name):
         self.type_name = type_name
-    
+
     id = db.Column(db.Integer, primary_key=True)
     type_name = db.Column(db.String(20))
 
     def __repr__(self):
         return self.type_name
-    
+
     def save(self):
         db.session.add(self)
         db.session.commit()
-        
+
+
 class Card_currency(db.Model):
-    __tablename__ = 'Card_currency'
+    __tablename__ = "Card_currency"
 
     def __init__(self, currency_name):
         self.currency_name = currency_name
-    
+
     id = db.Column(db.Integer, primary_key=True)
     currency_name = db.Column(db.String(10))
 
     def __repr__(self):
         return self.currency_name
-    
+
     def save(self):
         db.session.add(self)
         db.session.commit()
 
+
 class Card_use_time(db.Model):
-    __tablename__ = 'Card_use_time'
+    __tablename__ = "Card_use_time"
 
     def __init__(self, currency_time):
         self.currency_time = currency_time
-    
+
     id = db.Column(db.Integer, primary_key=True)
     currency_time = db.Column(db.String(50))
 
     def __repr__(self):
         return self.currency_time
-    
+
     def save(self):
         db.session.add(self)
         db.session.commit()
 
+
 class Card_office(db.Model):
-    __tablename__ = 'Card_office'
+    __tablename__ = "Card_office"
 
     def __init__(self, card_office):
         self.card_office = card_office
-    
+
     id = db.Column(db.Integer, primary_key=True)
     card_office = db.Column(db.String(500))
 
     def __repr__(self):
         return self.card_office
-    
+
     def save(self):
         db.session.add(self)
         db.session.commit()
 
+
 class User(db.Model, UserMixin):
-    __tablename__ = 'User'
-    def __init__(self, name, surname, email, username, password, is_active, is_superuser):
-        self.name = name 
+    __tablename__ = "User"
+
+    def __init__(
+        self, name, surname, email, username, password, is_active, is_superuser
+    ):
+        self.name = name
         self.surname = surname
-        self.email = email 
-        self.username = username 
+        self.email = email
+        self.username = username
         self.password = password
         self.is_active = is_active
         self.is_superuser = is_superuser
 
-    id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(30), nullable = False)
-    surname = db.Column(db.String(30), nullable = False)
-    email = db.Column(db.String(50), nullable = False)
-    username = db.Column(db.String(30), nullable = False)
-    password = db.Column(db.String(255), nullable = False)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    surname = db.Column(db.String(30), nullable=False)
+    email = db.Column(db.String(50), nullable=False)
+    username = db.Column(db.String(30), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    is_active = db.Column(db.Boolean, default = False)
-    is_superuser = db.Column(db.Boolean, default = False)
+    is_active = db.Column(db.Boolean, default=False)
+    is_superuser = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return self.username
@@ -494,6 +558,7 @@ class User(db.Model, UserMixin):
 
 
 # ----------------------------------------------------------------
+
 
 class userque(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -511,6 +576,7 @@ class userque(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
+
 
 class xeberler(db.Model):
     __tablename__ = "xeberler"
@@ -554,4 +620,3 @@ admin.add_view(ModelView(Card_use_time, db.session))
 admin.add_view(ModelView(Card_office, db.session))
 admin.add_view(ModelView(Deposit_offer, db.session))
 admin.add_view(ModelView(Credit_offer, db.session))
-
